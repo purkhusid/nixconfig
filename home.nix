@@ -68,6 +68,7 @@
       }
     ];
     terminal = "screen-256color";
+    secureSocket = false;
   };
 
   # Let Home Manager install and manage itself.
