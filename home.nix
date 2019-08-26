@@ -25,9 +25,8 @@
     enableAutosuggestions = true;
     history.extended = true;
     initExtra = ''
-      # Required so that Nix is available in zsh
-      . $HOME/.nix-profile/etc/profile.d/nix.sh
-      export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
+      # Required so that nix-darwin and custom channels are available
+      export NIX_PATH="darwin-config=$HOME/.nixpkgs/darwin-configuration.nix:/nix/var/nix/profiles/per-user/root/channels:$HOME/.nix-defexpr/channels"
       
       # Theme settings
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'

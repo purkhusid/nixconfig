@@ -5,8 +5,8 @@ export PWD=`pwd`;
 
 echo "Linking configs"
 if [[ $(uname) == "Darwin" ]]; then
-  mkdir -p ~/.nixpkgs
-  rm ~/.nixpkgs/darwin-configuration.nix
+  mkdir -p ~/.nixpkgs 
+  rm ~/.nixpkgs/darwin-configuration.nix || true
   ln -s "$PWD/darwin-configuration.nix" ~/.nixpkgs/darwin-configuration.nix
 
   #Move /etc/shells if Nix is not already managing it
@@ -18,7 +18,7 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 #Connect custom pkgs
-rm -rf ~/.nixpkgs/pkgs
+rm -rf ~/.nixpkgs/pkgs || true
 ln -s "$PWD/pkgs" ~/.nixpkgs/pkgs
 
 if [[ -z "$XDG_CONFIG_HOME" ]]; then
@@ -28,11 +28,11 @@ fi
 mkdir -p "$XDG_CONFIG_HOME/nixpkgs"
 
 # Connect home-manager file
-rm "$XDG_CONFIG_HOME/nixpkgs/home.nix"
+rm "$XDG_CONFIG_HOME/nixpkgs/home.nix" || true
 ln -s "$PWD/home.nix" "$XDG_CONFIG_HOME/nixpkgs/home.nix"
 
 # Connect Nix config file
-rm "$XDG_CONFIG_HOME/nixpkgs/config.nix"
+rm "$XDG_CONFIG_HOME/nixpkgs/config.nix" || true
 ln -s "$PWD/config.nix" "$XDG_CONFIG_HOME/nixpkgs/config.nix"
 echo "Linking of configs successful"
 

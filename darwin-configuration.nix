@@ -22,7 +22,7 @@
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
-  # services.nix-daemon.enable = true;
+  services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
   # Create /etc/bashrc that loads the nix-darwin environment.
@@ -76,7 +76,6 @@
   };
 
   system.activationScripts.extraUserActivation.text = ''
-  /run/current-system/sw/bin/zsh
   '';
 
   # You should generally set this to the total number of logical cores in your system.
