@@ -14,11 +14,11 @@
     userEmail = "purkhusid@gmail.com";
   };
 
-  programs.vscode = {
-    enable = true;
-    extensions = [
-    ];
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   extensions = [
+  #   ];
+  # };
 
   programs.zsh = {
     enable = true;
@@ -29,6 +29,7 @@
       export NIX_PATH="darwin-config=$HOME/.nixpkgs/darwin-configuration.nix:/nix/var/nix/profiles/per-user/root/channels:$HOME/.nix-defexpr/channels"
       
       # Theme settings
+      prompt_context() {}
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
     '';
     oh-my-zsh = {
