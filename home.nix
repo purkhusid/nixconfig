@@ -30,6 +30,9 @@
       
       # Theme settings
       prompt_context() {}
+      prompt_dir() {
+        prompt_segment blue black '%2~'
+      }
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
 
       #Functions
