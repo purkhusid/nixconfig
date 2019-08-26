@@ -13,6 +13,10 @@ Open a fresh shell for each step
 ### Things I can add to the config
 * Add aliases from old setup
 * Add a `w`(Change workspace) command to my .zshrc
+* Add kubernetes context to zsh prompt(https://github.com/jonmosco/kube-ps1/)
+   * Different color if in prod
+* Add aws config to zsh prompt
+   * Different color if prod
 
 ### Things not configured with Nix
 * (Mac) Enable control + space for selecting next input source
