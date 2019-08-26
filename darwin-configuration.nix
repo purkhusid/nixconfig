@@ -86,5 +86,6 @@
   fonts.enableFontDir = true;
   fonts.fonts = [
     pkgs.powerline-fonts
+    pkgs.fira-code
   ];
 }
