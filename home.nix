@@ -6,6 +6,9 @@
   home.packages = [
     pkgs.zsh-powerlevel9k
     pkgs.awscli
+    pkgs.kubernetes-helm
+    pkgs.kubectl
+    pkgs.kops
   ];
 
   programs.git = {
@@ -24,6 +27,9 @@
     enable = true;
     enableAutosuggestions = true;
     history.extended = true;
+    shellAliases = {
+      k = "kubectl";
+    };
     initExtra = ''
       # Required so that nix-darwin and custom channels are available
       export NIX_PATH="darwin-config=$HOME/.nixpkgs/darwin-configuration.nix:/nix/var/nix/profiles/per-user/root/channels:$HOME/.nix-defexpr/channels"
