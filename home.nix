@@ -1,14 +1,19 @@
 { config, pkgs, ... }:
 
+let
+  powerlevel10k = import ./pkgs/powerlevel10k.nix { inherit pkgs; };
+in
 {
   nixpkgs.config.allowUnfree = true;
 
   home.packages = [
-    pkgs.zsh-powerlevel9k
+    powerlevel10k
     pkgs.awscli
     pkgs.kubernetes-helm
     pkgs.kubectl
     pkgs.kops
+    pkgs.jre8
+    pkgs.openjdk8
   ];
 
   programs.git = {
@@ -26,7 +31,12 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    history.extended = true;
+    history = {
+      extended = true;
+      expireDuplicatesFirst = true;
+      save = 200000;
+      size = 200000;
+    };
     shellAliases = {
       k = "kubectl";
     };
@@ -35,10 +45,7 @@
       export NIX_PATH="darwin-config=$HOME/.nixpkgs/darwin-configuration.nix:/nix/var/nix/profiles/per-user/root/channels:$HOME/.nix-defexpr/channels"
       
       # Theme settings
-      prompt_context() {}
-      prompt_dir() {
-        prompt_segment blue black '%2~'
-      }
+      source ${powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
 
       #Functions
@@ -57,7 +64,6 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "kubectl" ];
-      theme = "agnoster";
       custom = "${builtins.getEnv "HOME"}/.zsh_custom";
     };
     # sessionVariables = import ./sessionVariables {
